@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Product Management System</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'products/styles.css' %}" />
+    <style>
+      /* styles */
+      .hero-section {
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(97, 61, 61);
+        text-align: center;
+      }
+
+      .hero-section h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-section p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .btn-custom {
+        font-size: 1.2rem;
+        padding: 0.75rem 2rem;
+        margin: 0.5rem;
+        border-radius: 25px;
+      }
+
+      .navbar-custom {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      .navbar-custom .navbar-brand,
+      .navbar-custom .nav-link {
+        color: white !important;
+      }
+
+      .navbar-custom .nav-link:hover {
+        color: #f8f9fa !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+      <a class="navbar-brand" href="#">Product Management</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'product_list' %}"
+              >View Products</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="container">
+        <h1 style="color: #776d45">Welcome to the Product Management System</h1>
+        <p>
+          This application allows you to manage products and orders efficiently.
+        </p>
+        <p>
+          <a class="btn btn-primary btn-custom" href="{% url 'register' %}"
+            >Register</a
+          >
+          <a
+            class="btn btn-secondary btn-custom"
+            href="{% url 'product_list' %}"
+            >View Products</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

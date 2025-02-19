@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .container {
+        max-width: 600px;
+        margin-top: 50px;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #343a40;
+      }
+      .form-group label {
+        font-weight: bold;
+        color: #495057;
+      }
+      .form-control {
+        border-radius: 4px;
+        border: 1px solid #ced4da;
+        padding: 10px;
+      }
+      .form-control:focus {
+        border-color: #80bdff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+      }
+      .btn-primary {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+      }
+      .btn-primary:hover {
+        background-color: #0056b3;
+      }
+      .btn-link {
+        color: #007bff;
+        text-decoration: none;
+      }
+      .btn-link:hover {
+        text-decoration: underline;
+      }
+      .text-center {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Register</h1>
+      <hr />
+
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_username">Username</label>
+          <input
+            type="text"
+            name="username"
+            class="form-control"
+            id="id_username"
+            placeholder="Enter username"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="id_email">Email</label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            id="id_email"
+            placeholder="Enter email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="id_password1">Password</label>
+          <input
+            type="password"
+            name="password1"
+            class="form-control"
+            id="id_password1"
+            placeholder="Enter password"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="id_password2">Confirm Password</label>
+          <input
+            type="password"
+            name="password2"
+            class="form-control"
+            id="id_password2"
+            placeholder="Confirm password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+
+      <div class="text-center mt-3">
+        <a class="btn btn-link" href="{% url 'product_list' %}"
+          >Back to Product List</a
+        >
+        <button
+          type="button"
+          class="btn btn-link"
+          data-toggle="modal"
+          data-target="#loginModal"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Login</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="loginForm">
+              <div class="form-group">
+                <label for="loginUsername">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="loginUsername"
+                  placeholder="Enter username"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                  placeholder="Enter password"
+                  required
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="loginButton">
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      // Redirect to Add Product page after login
+      document
+        .getElementById("loginButton")
+        .addEventListener("click", function () {
+          // Perform login validation here (if needed)
+          window.location.href = "{% url 'add_product' %}"; // Replace with your URL name
+        });
+    </script>
+  </body>
+</html>
