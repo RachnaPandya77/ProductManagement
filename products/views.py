@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import UserRegistrationForm, ProductForm, OrderForm
 from .models import Product
+from django.contrib.auth.models import User
 
 def register(request):
     if request.method == 'POST':
@@ -47,3 +48,7 @@ def order_product(request, product_id):
 
 def welcome(request):
     return render(request, 'products/welcome.html')
+
+def list_users(request):
+    users = User.objects.all()
+    return render(request, "user_list.html", {"users": users})
